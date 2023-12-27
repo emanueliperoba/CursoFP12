@@ -1,0 +1,139 @@
+# Cadastro de Carros
+class Carro:
+    def __init__(self, placa, ano, cor, modelo, quilometragem, valor_diaria, observacao):
+        self.placa = placa
+        self.ano = ano
+        self.cor = cor
+        self.modelo = modelo
+        self.quilometragem = quilometragem
+        self.valor_diaria = valor_diaria
+        self.observacao = observacao
+
+    def __str__(self):
+        return f"Placa: {self.placa}, Ano: {self.ano}, Cor: {self.cor}, Modelo: {self.modelo}, Quilometragem: {self.quilometragem}, Valor da Diária: R$ {self.valor_diaria}, Observação: {self.observacao}"
+
+# Subclasse - Carros utilitários
+class CarroUtilitario(Carro):
+    def __init__(self, placa, ano, cor, modelo, quilometragem, valor_diaria, observacao, qtd_passageiros, tamanho_bagageiro, km_por_litro):
+        super().__init__(placa, ano, cor, modelo, quilometragem, valor_diaria, observacao)
+        self.qtd_passageiros = qtd_passageiros
+        self.tamanho_bagageiro = tamanho_bagageiro
+        self.km_por_litro = km_por_litro
+
+    def __str__(self):
+        return super().__str__() + f", Passageiros: {self.qtd_passageiros}, Bagageiro: {self.tamanho_bagageiro}, Km/L: {self.km_por_litro}"
+
+# Subclasse - Carros esportivos
+class CarroEsportivo(Carro):
+    def __init__(self, placa, ano, cor, modelo, quilometragem, valor_diaria, observacao, tempo_ate_100, lista_melhorias):
+        super().__init__(placa, ano, cor, modelo, quilometragem, valor_diaria, observacao)
+        self.tempo_ate_100 = tempo_ate_100
+        self.lista_melhorias = lista_melhorias
+
+    def __str__(self):
+        return super().__str__() + f", Tempo até 100 km/h: {self.tempo_ate_100}, Melhorias: {', '.join(self.lista_melhorias)}"
+
+# Cadastro de Funcionários
+class Funcionario:
+    def __init__(self, nome, cpf, idade, endereco, data_contratacao, salario, qtd_alugueis_realizados, status, telefone):
+        self.nome = nome
+        self.cpf = cpf
+        self.idade = idade
+        self.endereco = endereco
+        self.data_contratacao = data_contratacao
+        self.salario = salario
+        self.qtd_alugueis_realizados = qtd_alugueis_realizados
+        self.status = status
+        self.telefone = telefone
+
+    def __str__(self):
+        return f"Funcionário: {self.nome}, CPF: {self.cpf}, Idade: {self.idade}, Endereço: {self.endereco}, Data de Contratação: {self.data_contratacao}, Salário: {self.salario}, Quantidade de Alugueis Realizados: {self.qtd_alugueis_realizados}, Status: {self.status}, Telefone para Contato: {self.telefone}"
+
+# Cadastro de Clientes
+class Cliente:
+    def __init__(self, nome, cpf, idade, data_nascimento, num_cart_motorista, foto_cart_motorista, ano_venc_cart_motorista, endereco, telefone, email):
+        self.nome = nome
+        self.cpf = cpf
+        self.idade = idade
+        self.data_nascimento = data_nascimento
+        self.num_cart_motorista = num_cart_motorista
+        self.foto_cart_motorista = foto_cart_motorista
+        self.ano_venc_cart_motorista = ano_venc_cart_motorista
+        self.endereco = endereco
+        self.telefone = telefone
+        self.email = email
+
+    def __str__(self):
+        return f"Cliente: {self.nome}, CPF: {self.cpf}, Idade: {self.idade}, Data de Nascimento: {self.data_nascimento}, Carteira de motorista - número: {self.num_cart_motorista}, Carteira de motorista - foto: {self.foto_cart_motorista}, Carteira de motorista - ano de vencimento: {self.ano_venc_cart_motorista}, Endereço: {self.endereco}, Telefone para Contato: {self.telefone}, E-mail: {self.email}"
+
+# Detalhes da Reserva
+class Reserva:
+    def __init__(self, cliente, codigo_reserva, status, data_inicio, data_fim):
+        self.cliente = cliente
+        self.codigo_reserva = codigo_reserva
+        self.status = status
+        self.data_inicio = data_inicio
+        self.data_fim = data_fim
+
+    def __str__(self):
+        return f"Cliente da reserva: {self.cliente.nome}, CPF do cliente: {self.cliente.cpf}, Código da Reserva: {self.codigo_reserva}, Status: {self.status}, Data de início: {self.data_inicio}, Data de fim: {self.data_fim}"
+
+# Promoções
+class EnviarPromocao:
+    def __init__(self, cliente, titulo_promo, descricao_promo, validade_promo):
+        self.cliente = cliente
+        self.titulo_promo = titulo_promo
+        self.descricao_promo = descricao_promo
+        self.validade_promo = validade_promo
+
+    def __str__(self):
+        return f"{self.titulo_promo}, Olá {self.cliente.nome}! Liberamos para você uma promoção imperdível {self.descricao_promo}. Aproveite até {self.validade_promo}"
+
+# Criando instâncias de funcionários
+funcionario1 = Funcionario("João", "12345678900", 30, "Rua A, 123", "2022-01-01", 3000.0, 0, "Ativo", "(11) 1234-5678")
+funcionario2 = Funcionario("Maria", "98765432100", 25, "Rua B, 456", "2022-02-01", 3500.0, 0, "Ativo", "(11) 9876-5432")
+funcionario3 = Funcionario("José", "43215678900", 31, "Rua A, 123", "2022-01-01", 3000.0, 0, "Ativo", "(11) 1234-5678")
+funcionario4 = Funcionario("Ana", "67895432100", 25, "Rua B, 456", "2022-02-01", 3500.0, 0, "Ativo", "(11) 9876-5432")
+
+
+
+# Criando instâncias de carros
+carro_utilitario1 = CarroUtilitario("ABC123", 2022, "Preto", "Fusca", 5000, 100.0, "Novo carro", 5, "Grande", 10.0)
+carro_esportivo1 = CarroEsportivo("XYZ987", 2023, "Vermelho", "Ferrari", 2000, 500.0, "Carro veloz", 4.0, ["Rodas esportivas", "Spoiler"])
+carro_utilitario2 = CarroUtilitario("ABC456", 2022, "Preto", "Foxa", 5000, 100.0, "Novo carro", 5, "Grande", 10.0)
+carro_esportivo2 = CarroEsportivo("XYZ456", 2023, "Vermelho", "Hilux", 2000, 500.0, "Carro veloz", 4.0, ["Rodas esportivas", "Spoiler"])
+
+# Criando instâncias de clientes
+cliente1 = Cliente("Francisco", "11122233344", 25, "1997-01-01", "ABCD123", "foto_cliente1.jpg", "2024-01-01", "Rua X, 789", "(11) 8765-4321", "cliente1@email.com")
+cliente2 = Cliente("Carolina", "55566677788", 30, "1992-05-10", "EFGH456", "foto_cliente2.jpg", "2023-12-31", "Rua Y, 456", "(11) 9876-5432", "cliente2@email.com")
+cliente3 = Cliente("Carlos", "11122233377", 28, "1995-01-01", "ABCD123", "foto_cliente1.jpg", "2024-01-01", "Rua X, 789", "(11) 8765-4321", "cliente1@email.com")
+cliente4 = Cliente("Beatriz", "55566677711", 31, "1992-06-10", "EFGH456", "foto_cliente2.jpg", "2023-12-31", "Rua Y, 456", "(11) 9876-5432", "cliente2@email.com")
+
+# Criando uma lista para armazenar as reservas
+reservas = []
+
+# Adicionando uma reserva com verificação de reserva ativa
+def adicionar_reserva(cliente, codigo_reserva, status, data_inicio, data_fim):
+    # Verificar se o cliente já possui uma reserva ativa
+    reservas_ativas = [reserva for reserva in reservas if reserva.cliente == cliente and reserva.status == "Ativa"]
+    if reservas_ativas:
+        print(f"O cliente {cliente.nome} já possui uma reserva ativa.")
+    else:
+        nova_reserva = Reserva(cliente, codigo_reserva, status, data_inicio, data_fim)
+        reservas.append(nova_reserva)
+        print(f"Reserva adicionada para o cliente {cliente.nome}.")
+
+
+# Adicionando uma reserva
+adicionar_reserva(cliente1, "RES123", "Ativa", "2023-01-01", "2023-01-10")
+
+# Adicionando outra reserva (no mesmo cliente - Isso será impedido pelo sistema de verificação)
+adicionar_reserva(cliente1, "RES456", "Ativa", "2023-02-01", "2023-02-10")
+
+# Adicionando mais reservas com outros clientes
+adicionar_reserva(cliente2, "RES789", "Ativa", "2023-03-01", "2023-03-10")
+
+# Listando todas as reservas ativas
+for reserva in reservas:
+    print(reserva)
+
